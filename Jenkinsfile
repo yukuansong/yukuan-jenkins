@@ -1,6 +1,14 @@
 
 node {
     stage('Checkouot code') {
+        properties([
+            disableConcurrentBuilds(),
+            pipelineTriggers([
+                cron('H H * * *'),
+                pollSCM('* * * * *')
+            ])
+        ])
+        
         checkout scm
     }
     stage('Build') {
