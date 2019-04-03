@@ -5,10 +5,10 @@ node {
             disableConcurrentBuilds(),
             pipelineTriggers([
                 cron('H H * * *'),
-                pollSCM('* * * * *')
+                pollSCM('H * * * *')
             ])
         ])
-        
+
         checkout scm
     }
     stage('Build') {
